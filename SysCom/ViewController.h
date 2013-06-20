@@ -17,6 +17,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *syscomLabel;
 
 - (void) initSysCom;
-- (void) serviceOnline;
+
 
 @end

@@ -40,8 +40,14 @@
 - (void) stopOnlineStatusCheckThread;
 
 
-//Funcion de prueba
--(Boolean) serviceOnline;
+//Funciones de prueba
+- (void) serverOnline;
+- (void) showStations;
+- (void) imageDownload;
+- (void) resourceDownload;
+- (void) sessionRegister;
+- (void) showActivities;
+- (void) visitorRegistration;
 
 // PUBLIC CLASS METHODS
 

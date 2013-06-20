@@ -23,10 +23,12 @@
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
     UIViewController *vc =[storybord instantiateInitialViewController];
     [(ViewController*)vc initSysCom];
-    [(ViewController*)vc serviceOnline];
-    
-    
     self.window.rootViewController = vc;
+    
+    /*ViewController *vc = [[ViewController alloc] init];
+    [vc initSysCom];
+    self.window.rootViewController = vc;*/
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

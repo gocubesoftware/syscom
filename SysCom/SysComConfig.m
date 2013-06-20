@@ -18,7 +18,7 @@
     self = [super init];
     if (self) {
         
-        _serverURL = @"http://checkinsystem.livininteractive.com/desarrolladores/index.php/services/serveronline";
+        _serverURL = @"http://checkinsystem.livininteractive.com/desarrolladores/index.php/services/";
         _recordingRetryTimeLapse = [NSNumber numberWithInt:30];
         _onlineStatusCheckTimeLapse = [NSNumber numberWithInt:30];
     }

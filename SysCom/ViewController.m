@@ -21,15 +21,13 @@
 - (void) initSysCom{
     SysComConfig *syscomConfig = [[SysComConfig alloc] init];
     _syscom = [[SysCom alloc] initWithConfig:syscomConfig];
-}
-
-- (void) serviceOnline{
-        if (_syscom.serviceOnline){
-            [[self syscomLabel] setText:@"testTrue"];
-        }
-        else {
-            [[self syscomLabel] setText:@"testFalse"];
-        }
+    [_syscom serverOnline];
+    [_syscom showStations];
+    [_syscom imageDownload];
+    [_syscom resourceDownload];
+    [_syscom sessionRegister];
+    [_syscom showActivities];
+    [_syscom visitorRegistration];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

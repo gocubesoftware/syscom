@@ -13,15 +13,19 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SysCom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyR-kh-Ly2">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="113" id="1Id-ZN-bGn"/>
+                                    <constraint firstAttribute="width" constant="149" id="IaU-cV-TJ7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="40"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uyR-kh-Ly2" firstAttribute="top" secondItem="E7J-Jb-LlK" secondAttribute="top" constant="65" id="VlJ-ki-9mk"/>
-                            <constraint firstItem="uyR-kh-Ly2" firstAttribute="leading" secondItem="E7J-Jb-LlK" secondAttribute="leading" constant="130" id="qh5-Dj-Civ"/>
+                            <constraint firstItem="uyR-kh-Ly2" firstAttribute="leading" secondItem="E7J-Jb-LlK" secondAttribute="leading" constant="102" id="4HX-TE-85b"/>
+                            <constraint firstItem="uyR-kh-Ly2" firstAttribute="top" secondItem="E7J-Jb-LlK" secondAttribute="top" constant="163" id="5Cc-0N-r0N"/>
                         </constraints>
                     </view>
                     <connections>
