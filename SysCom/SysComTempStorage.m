@@ -7,26 +7,27 @@
 //
 
 #import "SysComTempStorage.h"
+#import "SysComConfig.h"
 
 @interface SysComTempStorage ()
 
 // PRIVATE PROPERTIES
 
-@property NSDictionary* configDictionary;
+@property SysComConfig* syscomConfig;
 
 
 @end
 
 @implementation SysComTempStorage
 
-@synthesize configDictionary = _configDictionary;
+@synthesize syscomConfig = _syscomConfig;
 
 
 
-- (id) initWithConfig: (NSDictionary*) configDictionary{
+- (id) initWithConfig: (SysComConfig*) syscomConfig{
     self = [super init];
     if (self) {
-        [self setConfigDictionary:configDictionary];
+        _syscomConfig = syscomConfig;
     }
     return self;
 }

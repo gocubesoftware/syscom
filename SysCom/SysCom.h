@@ -8,16 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SysCom : NSObject
+@class SysComConfig;
+
+@interface SysCom : UIViewController
 
 // PUBLIC PROPERTIES
 
 @property (readonly) NSNumber* connOfflineTimeLapse;
 
 
-// PUBLIC METHODS
+// PUBLIC INSTANCE METHODS
 
-- (id) initWithConfig: (NSDictionary*) configDictionary;
+- (id) initWithConfig: (SysComConfig*) syscomConfig;
 
 - (void) callLectureServiceWithParameters: (NSDictionary*) parametersDictionary DelegateObject: (id) delegateObject Message: (SEL) message;
 
@@ -36,6 +38,12 @@
 - (NSString*) getLastRecordingError;
 - (void) startOnlineStatusCheckThreadWithStatusChangeDelegate: (id) delegateObject Message: (SEL) message;
 - (void) stopOnlineStatusCheckThread;
+
+
+//Funcion de prueba
+-(Boolean) serviceOnline;
+
+// PUBLIC CLASS METHODS
 
 
 @end

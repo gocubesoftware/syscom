@@ -10,6 +10,9 @@
 		89259EA01772D69600218A98 /* SysCom.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259E9F1772D69600218A98 /* SysCom.m */; };
 		89259EA31772DA5800218A98 /* SysComTransmit.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259EA21772DA5800218A98 /* SysComTransmit.m */; };
 		89259EA61772DA6900218A98 /* SysComTempStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259EA51772DA6900218A98 /* SysComTempStorage.m */; };
+		89259EF01772F3C800218A98 /* SysComConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259EEF1772F3C800218A98 /* SysComConfig.m */; };
+		89259EF31772F91800218A98 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259EF21772F91800218A98 /* ViewController.m */; };
+		89259EF51772F93800218A98 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89259EF41772F93800218A98 /* MainStoryboard_iPhone.storyboard */; };
 		898D1D9C1772C81D00772F52 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898D1D9B1772C81D00772F52 /* UIKit.framework */; };
 		898D1D9E1772C81D00772F52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898D1D9D1772C81D00772F52 /* Foundation.framework */; };
 		898D1DA01772C81D00772F52 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898D1D9F1772C81D00772F52 /* CoreGraphics.framework */; };
@@ -46,6 +49,11 @@
 		89259EA21772DA5800218A98 /* SysComTransmit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysComTransmit.m; sourceTree = "<group>"; };
 		89259EA41772DA6900218A98 /* SysComTempStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysComTempStorage.h; sourceTree = "<group>"; };
 		89259EA51772DA6900218A98 /* SysComTempStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysComTempStorage.m; sourceTree = "<group>"; };
+		89259EEE1772F3C800218A98 /* SysComConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysComConfig.h; sourceTree = "<group>"; };
+		89259EEF1772F3C800218A98 /* SysComConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysComConfig.m; sourceTree = "<group>"; };
+		89259EF11772F91800218A98 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		89259EF21772F91800218A98 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		89259EF41772F93800218A98 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		898D1D981772C81D00772F52 /* SysCom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SysCom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898D1D9B1772C81D00772F52 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		898D1D9D1772C81D00772F52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -129,6 +137,8 @@
 		898D1DA31772C81D00772F52 /* SysCom */ = {
 			isa = PBXGroup;
 			children = (
+				89259EEE1772F3C800218A98 /* SysComConfig.h */,
+				89259EEF1772F3C800218A98 /* SysComConfig.m */,
 				898D1DAC1772C81D00772F52 /* AppDelegate.h */,
 				898D1DAD1772C81D00772F52 /* AppDelegate.m */,
 				898D1DB51772C81D00772F52 /* SysCom.xcdatamodeld */,
@@ -139,6 +149,9 @@
 				89259EA21772DA5800218A98 /* SysComTransmit.m */,
 				89259EA41772DA6900218A98 /* SysComTempStorage.h */,
 				89259EA51772DA6900218A98 /* SysComTempStorage.m */,
+				89259EF11772F91800218A98 /* ViewController.h */,
+				89259EF21772F91800218A98 /* ViewController.m */,
+				89259EF41772F93800218A98 /* MainStoryboard_iPhone.storyboard */,
 			);
 			path = SysCom;
 			sourceTree = "<group>";
@@ -251,6 +264,7 @@
 				898D1DB01772C81D00772F52 /* Default.png in Resources */,
 				898D1DB21772C81D00772F52 /* Default@2x.png in Resources */,
 				898D1DB41772C81D00772F52 /* Default-568h@2x.png in Resources */,
+				89259EF51772F93800218A98 /* MainStoryboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +305,8 @@
 				89259EA01772D69600218A98 /* SysCom.m in Sources */,
 				89259EA31772DA5800218A98 /* SysComTransmit.m in Sources */,
 				89259EA61772DA6900218A98 /* SysComTempStorage.m in Sources */,
+				89259EF01772F3C800218A98 /* SysComConfig.m in Sources */,
+				89259EF31772F91800218A98 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

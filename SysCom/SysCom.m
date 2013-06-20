@@ -9,6 +9,7 @@
 #import "SysCom.h"
 #import "SysComTransmit.h"
 #import "SysComTempStorage.h"
+#import "SysComConfig.h"
 
 @interface SysCom ()
 
@@ -16,7 +17,7 @@
 
 @property SysComTransmit* syscomTransmit;
 @property SysComTempStorage* syscomTempStorage;
-@property NSDictionary* configDictionary;
+@property SysComConfig* syscomConfig;
 
 
 @end
@@ -25,16 +26,16 @@
 
 @synthesize syscomTransmit = _syscomTransmit;
 @synthesize syscomTempStorage = _syscomTempStorage;
-@synthesize configDictionary = _configDictionary;
+@synthesize syscomConfig = _syscomConfig;
 @synthesize connOfflineTimeLapse = _connOfflineTimeLapse;
 
-- (id) initWithConfig: (NSDictionary*) configDictionary{
+- (id) initWithConfig: (SysComConfig*) syscomConfig{
     self = [super init];
     if (self) {
         
-        _syscomTransmit = [[SysComTransmit alloc] initWithConfig:configDictionary];
-        _syscomTempStorage = [[SysComTempStorage alloc] initWithConfig:configDictionary];
-        _configDictionary = configDictionary;
+        _syscomTransmit = [[SysComTransmit alloc] initWithConfig:syscomConfig];
+        _syscomTempStorage = [[SysComTempStorage alloc] initWithConfig:syscomConfig];
+        _syscomConfig = syscomConfig;
         _connOfflineTimeLapse = 0;
     }
     return self;
@@ -81,6 +82,24 @@
 }
 - (void) stopOnlineStatusCheckThread{
     
+}
+
+
+// Funcion de prueba
+-(Boolean) serviceOnline{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_syscomConfig.serverURL] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10];
+    
+    [request setHTTPMethod: @"GET"];
+    
+    NSError *requestError;
+    NSURLResponse *urlResponse = nil;
+    
+    
+    NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+    
+    NSString* newStr = [[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding];
+    print newStr;
+    return TRUE;
 }
 
 

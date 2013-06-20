@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class SysComConfig;
+
 @interface SysComTempStorage : NSObject
 
-- (id) initWithConfig: (NSDictionary*) configDictionary;
+- (id) initWithConfig: (SysComConfig*) syscomConfig;
 
 @end
