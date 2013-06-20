@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89259EA01772D69600218A98 /* SysCom.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259E9F1772D69600218A98 /* SysCom.m */; };
+		89259EA31772DA5800218A98 /* SysComTransmit.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259EA21772DA5800218A98 /* SysComTransmit.m */; };
+		89259EA61772DA6900218A98 /* SysComTempStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259EA51772DA6900218A98 /* SysComTempStorage.m */; };
 		898D1D9C1772C81D00772F52 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898D1D9B1772C81D00772F52 /* UIKit.framework */; };
 		898D1D9E1772C81D00772F52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898D1D9D1772C81D00772F52 /* Foundation.framework */; };
 		898D1DA01772C81D00772F52 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898D1D9F1772C81D00772F52 /* CoreGraphics.framework */; };
@@ -37,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89259E9E1772D69600218A98 /* SysCom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysCom.h; sourceTree = "<group>"; };
+		89259E9F1772D69600218A98 /* SysCom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysCom.m; sourceTree = "<group>"; };
+		89259EA11772DA5800218A98 /* SysComTransmit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysComTransmit.h; sourceTree = "<group>"; };
+		89259EA21772DA5800218A98 /* SysComTransmit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysComTransmit.m; sourceTree = "<group>"; };
+		89259EA41772DA6900218A98 /* SysComTempStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysComTempStorage.h; sourceTree = "<group>"; };
+		89259EA51772DA6900218A98 /* SysComTempStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysComTempStorage.m; sourceTree = "<group>"; };
 		898D1D981772C81D00772F52 /* SysCom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SysCom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898D1D9B1772C81D00772F52 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		898D1D9D1772C81D00772F52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -124,6 +133,12 @@
 				898D1DAD1772C81D00772F52 /* AppDelegate.m */,
 				898D1DB51772C81D00772F52 /* SysCom.xcdatamodeld */,
 				898D1DA41772C81D00772F52 /* Supporting Files */,
+				89259E9E1772D69600218A98 /* SysCom.h */,
+				89259E9F1772D69600218A98 /* SysCom.m */,
+				89259EA11772DA5800218A98 /* SysComTransmit.h */,
+				89259EA21772DA5800218A98 /* SysComTransmit.m */,
+				89259EA41772DA6900218A98 /* SysComTempStorage.h */,
+				89259EA51772DA6900218A98 /* SysComTempStorage.m */,
 			);
 			path = SysCom;
 			sourceTree = "<group>";
@@ -273,6 +288,9 @@
 				898D1DAA1772C81D00772F52 /* main.m in Sources */,
 				898D1DAE1772C81D00772F52 /* AppDelegate.m in Sources */,
 				898D1DB71772C81D00772F52 /* SysCom.xcdatamodeld in Sources */,
+				89259EA01772D69600218A98 /* SysCom.m in Sources */,
+				89259EA31772DA5800218A98 /* SysComTransmit.m in Sources */,
+				89259EA61772DA6900218A98 /* SysComTempStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +465,7 @@
 				898D1DD21772C81D00772F52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		898D1DD31772C81D00772F52 /* Build configuration list for PBXNativeTarget "SysComTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +474,7 @@
 				898D1DD51772C81D00772F52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
