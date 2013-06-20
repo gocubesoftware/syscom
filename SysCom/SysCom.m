@@ -83,8 +83,9 @@
     
 }
 
-
-// Funcion de prueba
+// -----------------------------------------------------------------
+// CODIGO PARA PRUEBAS
+// -----------------------------------------------------------------
 -(void) serverOnline{
     
     NSString *url = [_syscomConfig.serverURL stringByAppendingString:@"serveronline"];
@@ -164,6 +165,16 @@
 }
 - (void) resourceDownload{
     
+    NSString *url = @"http://checkinsystem.livininteractive.com/desarrolladores/uploads/backgrounds/19/background.png";
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10];
+    [request setHTTPMethod: @"GET"];
+    NSError *requestError;
+    NSURLResponse *urlResponse = nil;
+    NSData *rawResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+    
+    UIImage *downloadedImage = [[UIImage alloc] initWithData:rawResponse];
+    NSLog(@"\n\nresourceDownload IMAGE DOWNLOADED:\n\n ");
 }
 - (void) sessionRegister{
     
