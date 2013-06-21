@@ -13,6 +13,7 @@
 		89259EF01772F3C800218A98 /* SysComConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259EEF1772F3C800218A98 /* SysComConfig.m */; };
 		89259EF31772F91800218A98 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259EF21772F91800218A98 /* ViewController.m */; };
 		89259EF51772F93800218A98 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89259EF41772F93800218A98 /* MainStoryboard_iPhone.storyboard */; };
+		89259EF81774E32300218A98 /* SysComUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 89259EF71774E32300218A98 /* SysComUtilities.m */; };
 		898D1D9C1772C81D00772F52 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898D1D9B1772C81D00772F52 /* UIKit.framework */; };
 		898D1D9E1772C81D00772F52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898D1D9D1772C81D00772F52 /* Foundation.framework */; };
 		898D1DA01772C81D00772F52 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898D1D9F1772C81D00772F52 /* CoreGraphics.framework */; };
@@ -54,6 +55,8 @@
 		89259EF11772F91800218A98 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		89259EF21772F91800218A98 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		89259EF41772F93800218A98 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		89259EF61774E32300218A98 /* SysComUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysComUtilities.h; sourceTree = "<group>"; };
+		89259EF71774E32300218A98 /* SysComUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysComUtilities.m; sourceTree = "<group>"; };
 		898D1D981772C81D00772F52 /* SysCom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SysCom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898D1D9B1772C81D00772F52 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		898D1D9D1772C81D00772F52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -152,6 +155,8 @@
 				89259EF11772F91800218A98 /* ViewController.h */,
 				89259EF21772F91800218A98 /* ViewController.m */,
 				89259EF41772F93800218A98 /* MainStoryboard_iPhone.storyboard */,
+				89259EF61774E32300218A98 /* SysComUtilities.h */,
+				89259EF71774E32300218A98 /* SysComUtilities.m */,
 			);
 			path = SysCom;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 				89259EA61772DA6900218A98 /* SysComTempStorage.m in Sources */,
 				89259EF01772F3C800218A98 /* SysComConfig.m in Sources */,
 				89259EF31772F91800218A98 /* ViewController.m in Sources */,
+				89259EF81774E32300218A98 /* SysComUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

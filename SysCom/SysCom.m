@@ -18,6 +18,11 @@
 @property SysComTransmit* syscomTransmit;
 @property SysComTempStorage* syscomTempStorage;
 @property SysComConfig* syscomConfig;
+@property Boolean connStatusCheckThreadRunning;
+
+
+// PRIVATE METHODS
+- (void) connStatusCheck;
 
 
 @end
@@ -27,19 +32,54 @@
 @synthesize syscomTransmit = _syscomTransmit;
 @synthesize syscomTempStorage = _syscomTempStorage;
 @synthesize syscomConfig = _syscomConfig;
-@synthesize connOfflineTimeLapse = _connOfflineTimeLapse;
+@synthesize connOfflineTimeInterval = _connOfflineTimeInterval;
+@synthesize connStatusCheckThreadRunning = _connStatusCheckThreadRunning;
+
+
+// -----------------------------------------------------------------
+// METODOS PUBLICOS
+// -----------------------------------------------------------------
+
+
+// --------------------------
+// En desarrollo
 
 - (id) initWithConfig: (SysComConfig*) syscomConfig{
     self = [super init];
     if (self) {
+        
+        // Inicialización de la clase SysCom
         _syscomTransmit = [[SysComTransmit alloc] initWithConfig:syscomConfig];
         _syscomTempStorage = [[SysComTempStorage alloc] initWithConfig:syscomConfig];
         _syscomConfig = syscomConfig;
-        _connOfflineTimeLapse = 0;
+        _connOfflineTimeInterval = 0;
     }
     return self;
 }
 
+- (void) startConnStatusCheckThread{
+    // Esta bandera mantendrá el hilo corriendo en connStatusCheck indefinidamente
+    _connStatusCheckThreadRunning = TRUE;
+    NSThread *connStatusCheckThread = [[NSThread alloc] initWithTarget:self
+                                                              selector:@selector(connStatusCheck)
+                                                                object:nil];
+    [connStatusCheckThread start];
+}
+
+- (void) stopConnStatusCheckThread{
+    // Al cambiar esta bandera el hilo enciclado en connStatusCheck terminará su ejecución
+    _connStatusCheckThreadRunning = FALSE;
+}
+
+- (NSString*) callLectureService: (NSString*) service WithParameters: (NSString*) parameters{
+    // Se concatenan la dirección del servidor con la dirección del servicio
+    NSString *url = [_syscomConfig.serverURL stringByAppendingString:service];
+    // Se pide un request POST SINCRONICO
+    NSString *response = [_syscomTransmit synchronicPostWithUrl:url Parameters:parameters];
+    return response;
+}
+
+// --------------------------
 
 - (void) callLectureServiceWithParameters: (NSDictionary*) parametersDictionary DelegateObject: (id) delegateObject Message: (SEL) message{
     
@@ -76,29 +116,63 @@
 - (NSString*) getLastRecordingError{
     return @"";
 }
-- (void) startOnlineStatusCheckThreadWithStatusChangeDelegate: (id) delegateObject Message: (SEL) message{
-    
+
+// -----------------------------------------------------------------
+// METODOS PRIVADOS
+// -----------------------------------------------------------------
+- (void) connStatusCheck{
+    @autoreleasepool {
+        NSString *url = [_syscomConfig.serverURL stringByAppendingString:_syscomConfig.serverOnlineMethodName];
+        NSString *responseText;
+        Boolean wasOnline = FALSE;
+        Boolean isOnline = FALSE;
+
+        while (_connStatusCheckThreadRunning) {
+          
+            responseText = [_syscomTransmit getWithUrl:url Parameters:nil];
+            // FALTA:
+            // MANEJO DE ERRORES DE COMMUNICACION COMO 404 O TIMEOUTS
+            // (errores de lógia de negocios son transparentes a syscom
+            // PROCESAR EL XML ACA Y CAMBIAR LA VARIABLE isOnline
+            // -------------------------------
+            // CODIGO DE PRUEBA
+            if ([responseText rangeOfString:@"<status>1</status>"].location != NSNotFound){
+                isOnline = TRUE;
+            }
+            else
+                isOnline = FALSE;
+            // -------------------------------
+            
+            if (isOnline){
+                // Reset the time counter
+                _connOfflineTimeInterval = 0;
+            } else {
+                // Sum the offline time to the counter
+                _connOfflineTimeInterval += _syscomConfig.onlineStatusCheckTimeInterval;
+            }
+            
+            if (isOnline != wasOnline){ // if the status has changed
+                if (isOnline){
+                    // Send the notification of the status change to Online
+                    [[NSNotificationCenter defaultCenter] postNotificationName:_syscomConfig.onlineNotificationName object:self];
+                }
+                else{
+                    // Send the notification of the status change to Offline
+                    [[NSNotificationCenter defaultCenter] postNotificationName:_syscomConfig.offlineNotificationName object:self];
+                }
+            }
+            wasOnline = isOnline; // Safe the current status for the next check
+            // wait a defined time interval before checking again
+            [NSThread sleepForTimeInterval:_syscomConfig.onlineStatusCheckTimeInterval];
+        }
+    }
 }
-- (void) stopOnlineStatusCheckThread{
-    
-}
+
 
 // -----------------------------------------------------------------
 // CODIGO PARA PRUEBAS
 // -----------------------------------------------------------------
--(void) serverOnline{
-    
-    NSString *url = [_syscomConfig.serverURL stringByAppendingString:@"serveronline"];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10];
-    [request setHTTPMethod: @"GET"];
-    NSError *requestError;
-    NSURLResponse *urlResponse = nil;
-    NSData *rawResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-    
-    NSString* responseText= [[NSString alloc] initWithData:rawResponse encoding:NSUTF8StringEncoding];
-    NSLog(@"\n\nserviveOnline responseText:\n\n%@", responseText);
-}
+
 
 -(void) showStations{
     
@@ -164,7 +238,7 @@
     NSLog(@"\n\nimageDownload responseText:\n\n%@", responseText);
 }
 - (void) resourceDownload{
-    
+    /*
     NSString *url = @"http://checkinsystem.livininteractive.com/desarrolladores/uploads/backgrounds/19/background.png";
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10];
@@ -173,8 +247,8 @@
     NSURLResponse *urlResponse = nil;
     NSData *rawResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
     
-    UIImage *downloadedImage = [[UIImage alloc] initWithData:rawResponse];
-    NSLog(@"\n\nresourceDownload IMAGE DOWNLOADED:\n\n ");
+    //UIImage *downloadedImage = [[UIImage alloc] initWithData:rawResponse];
+    NSLog(@"\n\nresourceDownload IMAGE DOWNLOADED:\n\n ");*/
 }
 - (void) sessionRegister{
     

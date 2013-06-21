@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "SysCom.h"
+#import "SysComConfig.h"
 
 @implementation AppDelegate
 
@@ -17,22 +19,46 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    
+    // -------------------------------------------------------------------------
+    //Inicialización de la interfaz gráfica
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];    
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
-    UIViewController *vc =[storybord instantiateInitialViewController];
-    [(ViewController*)vc initSysCom];
+    ViewController *vc = (ViewController*)[storybord instantiateInitialViewController];
     self.window.rootViewController = vc;
-    
-    /*ViewController *vc = [[ViewController alloc] init];
-    [vc initSysCom];
-    self.window.rootViewController = vc;*/
-    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    return YES;
     
+
+    // -------------------------------------------------------------------------
+    // Inicialización de SysCom
+    SysComConfig *syscomConfig = [[SysComConfig alloc] init]; //configuración con valores por defecto
+    SysCom *_syscom = [[SysCom alloc] initWithConfig:syscomConfig];
+    syscomConfig.onlineStatusCheckTimeInterval = 1;
+
+    // Iniciar chequeo de conexión
+    [_syscom startConnStatusCheckThread];
+    
+    // Llamada a showStations
+    NSString *responseText = [_syscom callLectureService:@"showstations" WithParameters:@"passwordconfig=desa&timezone=America/New_York"];
+    
+    NSLog(@"\nRespuesta de showstations:\n\n%@\n", responseText);
+    
+    // Llamada a imageDownload
+    responseText = [_syscom callLectureService:@"imageDownload" WithParameters:@"passwordconfig=desa&timezone=America/New_York&id_program=19&id_client=13"];
+    
+    NSLog(@"\nRespuesta de imageDownload:\n\n%@\n", responseText);
+    
+    
+    
+    // -------- Para Pruebas
+    /*
+
+     [_syscom resourceDownload];
+     [_syscom sessionRegister];
+     [_syscom showActivities];
+     [_syscom visitorRegistration];*/
+    
+    return YES;
     
 }
 

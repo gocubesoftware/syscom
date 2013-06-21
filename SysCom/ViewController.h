@@ -12,11 +12,7 @@
 
 @interface ViewController : UIViewController
 
-@property (readonly, strong, nonatomic) SysCom *syscom;
-
 @property (nonatomic, weak) IBOutlet UILabel *syscomLabel;
-
-- (void) initSysCom;
 
 
 @end

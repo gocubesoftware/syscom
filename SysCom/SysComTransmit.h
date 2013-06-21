@@ -14,4 +14,7 @@
 
 - (id) initWithConfig: (SysComConfig*) syscomConfig;
 
+- (NSString*) getWithUrl: (NSString*) url Parameters: (NSString*) parameters;
+- (NSString*) synchronicPostWithUrl: (NSString*) url Parameters: (NSString*) parameters;
+
 @end

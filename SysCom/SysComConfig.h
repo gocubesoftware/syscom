@@ -10,9 +10,23 @@
 
 @interface SysComConfig : NSObject
 
-@property (readonly) NSString *serverURL;
-@property (readonly) NSNumber *recordingRetryTimeLapse;
-@property (readonly) NSNumber *onlineStatusCheckTimeLapse;
+@property (readwrite) NSString *serverURL;
+
+@property (readwrite) NSTimeInterval getTimeoutInterval;
+@property (readwrite) NSTimeInterval postTimeoutInterval;
+
+@property (readwrite) NSTimeInterval recordingRetryTimeInterval;
+@property (readwrite) NSTimeInterval onlineStatusCheckTimeInterval;
+
+
+// Names of WebServices methods
+@property (readonly) NSString *serverOnlineMethodName;
+
+
+
+// Names of Notifications
+@property (readonly) NSString *onlineNotificationName;
+@property (readonly) NSString *offlineNotificationName;
 
 - (id) init;
 

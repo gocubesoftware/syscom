@@ -14,13 +14,23 @@
 
 // PUBLIC PROPERTIES
 
-@property (readonly) NSNumber* connOfflineTimeLapse;
+@property (readonly) NSTimeInterval connOfflineTimeInterval;
 
 
 // PUBLIC INSTANCE METHODS
 
-- (id) initWithConfig: (SysComConfig*) syscomConfig;
+// --------------------------
+// En desarrollo
 
+- (id) initWithConfig: (SysComConfig*) syscomConfig;
+- (void) startConnStatusCheckThread;
+
+- (NSString*) callLectureService: (NSString*) service WithParameters: (NSString*) parameters;
+
+// --------------------------
+
+// --------------------------
+// Por desarrollar
 - (void) callLectureServiceWithParameters: (NSDictionary*) parametersDictionary DelegateObject: (id) delegateObject Message: (SEL) message;
 
 - (NSString*) callRecordingServiceWithParameters: (NSDictionary*) parametersDictionary;
@@ -36,12 +46,14 @@
 
 - (NSString*) getRecordStatusWithRecordId: (NSNumber*) recordId;
 - (NSString*) getLastRecordingError;
-- (void) startOnlineStatusCheckThreadWithStatusChangeDelegate: (id) delegateObject Message: (SEL) message;
-- (void) stopOnlineStatusCheckThread;
+
+- (void) stopConnStatusCheckThread;
+
+// ----------------------------
 
 
 //Funciones de prueba
-- (void) serverOnline;
+
 - (void) showStations;
 - (void) imageDownload;
 - (void) resourceDownload;

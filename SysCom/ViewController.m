@@ -7,8 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "SysCom.h"
-#import "SysComConfig.h"
 
 @interface ViewController ()
 
@@ -16,34 +14,52 @@
 
 @implementation ViewController
 
-@synthesize syscom = _syscom;
-
-- (void) initSysCom{
-    SysComConfig *syscomConfig = [[SysComConfig alloc] init];
-    _syscom = [[SysCom alloc] initWithConfig:syscomConfig];
-    [_syscom serverOnline];
-    [_syscom showStations];
-    [_syscom imageDownload];
-    [_syscom resourceDownload];
-    [_syscom sessionRegister];
-    [_syscom showActivities];
-    [_syscom visitorRegistration];
+// ------------------------------------------------------
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveConnStatusChangeNotification:)
+                                                 name:@"onlineNotification"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveConnStatusChangeNotification:)
+                                                 name:@"offlineNotification"
+                                               object:nil];
 }
+
+- (void) receiveConnStatusChangeNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:@"onlineNotification"])
+        NSLog (@"\nConnection Status Change to Online!  :)\n\n");
+    
+    if ([[notification name] isEqualToString:@"offlineNotification"])
+        NSLog (@"\nConnection Status Change to Offline :( :(\n\n");
+}
+
+
+
+- (void) dealloc
+{
+    // If you don't remove yourself as an observer, the Notification Center
+    // will continue to try and send notification objects to the deallocated
+    // object.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+}
+
+// ------------------------------------------------------
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
